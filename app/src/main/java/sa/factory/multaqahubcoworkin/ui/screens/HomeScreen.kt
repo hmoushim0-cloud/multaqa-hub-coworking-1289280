@@ -26,6 +26,7 @@ fun HomeScreen(
     viewModel: MultaqaHubViewModel,
     onItemClick: (MultaqaHubItem) -> Unit
 ) {
+    val defaultPeripheral = "13.56 MHz RFID Turnstile Access + NFC Door Lock"
     val categories = listOf("الكل", "الخدمات الرئيسية", "المراقبة الحية", "التقارير الضريبية", "الإعدادات")
 
     Column(
@@ -36,8 +37,8 @@ fun HomeScreen(
     ) {
         // Header
         Column {
-            Text("multaqa-hub-coworking-1289280", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
-            Text("منظومة coworking المتكاملة مع ربط 13.56 MHz RFID Turnstile Access + TOTP Pass", fontSize = 12.sp, color = BrandTextSecondary)
+            Text("ملتقى لمساحات العمل المشتركة - Multaqa Hub", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
+            Text("إدارة المكاتب الذكية وحجوزات قاعات الاجتماعات مع بوابات العبور بالبطاقات الذكية 13.56 MHz", fontSize = 12.sp, color = BrandTextSecondary)
         }
 
         // Hardware Status Capsule
@@ -52,8 +53,8 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("العتاد الحي: ${state.telemetry?.peripheralName ?: '13.56 MHz RFID Turnstile Access + TOTP Pass'}", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
-                    Text(state.telemetry?.liveReading ?: "13.56 MHz RFID Turnstile Access + TOTP Pass: ONLINE | READY", fontSize = 11.sp, color = BrandTextSecondary)
+                    Text("العتاد الحي: ${state.telemetry?.peripheralName ?: defaultPeripheral}", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
+                    Text(state.telemetry?.liveReading ?: "13.56 MHz RFID Turnstile Access: ONLINE | READY", fontSize = 11.sp, color = BrandTextSecondary)
                 }
                 Badge(containerColor = BrandPrimary) {
                     Text(state.telemetry?.status ?: "ONLINE", color = Color.Black, fontWeight = FontWeight.Bold, modifier = Modifier.padding(2.dp))
